@@ -13,5 +13,23 @@
   "bugs": {
     "url": "https://github.com/liquid-labs/plugable-projects-audit/issues"
   },
-  "homepage": "https://github.com/liquid-labs/plugable-projects-audit#readme"
+  "homepage": "https://github.com/liquid-labs/plugable-projects-audit#readme",
+  "dependencies": {
+    "@liquid-labs/http-smart-response": "^1.0.0-alpha.4",
+    "@liquid-labs/npm-toolkit": "^1.0.0-alpha.17",
+    "http-errors": "^2.0.0",
+    "npm-check-plus": "^1.0.0-alpha.5"
+  },
+  "devDependencies": {
+    "@liquid-labs/sdlc-resource-babel-and-rollup": "^1.0.0-alpha.5",
+    "@liquid-labs/sdlc-resource-eslint": "^1.0.0-alpha.2",
+    "@liquid-labs/sdlc-resource-jest": "^1.0.0-alpha.5"
+  },
+  "_npm-check-plus": {
+    "depcheck": {
+      "ignoreMatches": [
+        "@liquid-labs/sdlc-resource-*"
+      ]
+    }
+  }
 }
