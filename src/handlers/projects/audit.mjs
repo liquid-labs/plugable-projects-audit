@@ -3,7 +3,7 @@ import { doAudit, getAuditEndpointParameters } from './_lib/audit-lib'
 
 const path = ['projects', ':projectName', 'audit']
 
-const { help, method, parameters } = getAuditEndpointParameters({ workDesc: 'named' })
+const { help, method, parameters } = getAuditEndpointParameters({ workDesc : 'named' })
 
 const func = ({ app, reporter }) => async(req, res) => {
   reporter = reporter.isolate()

@@ -1,16 +1,16 @@
 import { httpSmartResponse } from '@liquid-labs/http-smart-response'
 import { fixReport, npmAutoFix, npmCheck } from 'npm-check-plus'
 
-const doAuditFix = async ({ app, projectName, req, res }) => {
+const doAuditFix = async({ app, projectName, req, res }) => {
   const { dryRun, removePackages, updateMinimums } = req.vars
 
   const { projectPath: packageRoot } = await app.ext._liqProjects.playgroundMonitor.getProjectData(projectName)
 
   const auditReport = await npmCheck({ packageRoot })
-  const fixResults = await npmAutoFix({ checkResults: auditReport, dryRun, packageRoot, removePackages, updateMinimums })
+  const fixResults = await npmAutoFix({ checkResults : auditReport, dryRun, packageRoot, removePackages, updateMinimums })
   const report = fixReport(fixResults)
 
-  httpSmartResponse({ msg: report, data: fixResults, req, res })
+  httpSmartResponse({ msg : report, data : fixResults, req, res })
 }
 
 const getAuditFixEndpointParameters = ({ workDesc }) => {
@@ -27,20 +27,20 @@ const getAuditFixEndpointParameters = ({ workDesc }) => {
   const method = 'put'
 
   const parameters = [
-    { 
-      name: 'dryRun',
-      isBoolean: true,
-      description: 'When set to true, no changes are actually changed, but a report of what would be done is generated.'
+    {
+      name        : 'dryRun',
+      isBoolean   : true,
+      description : 'When set to true, no changes are actually changed, but a report of what would be done is generated.'
     },
     {
-      name: 'removePackages',
-      isBoolean: true,
-      dascription: `By default, "extra" packages are not automatically removed as there are many instances in which they are used indirectly. E.g., the "sdlc-resource" packages used to provide Babel transpiling or Jest unit testing. Setting this parameter to true will remove these packaes. You can exclude false positives (and protect them from removal) by listing known good packages which would otherwise look unused as an array of glob patterns in '_npm-check-plus.depcheck.ignoreMatches' in the 'package.json' file.`,
+      name        : 'removePackages',
+      isBoolean   : true,
+      dascription : 'By default, "extra" packages are not automatically removed as there are many instances in which they are used indirectly. E.g., the "sdlc-resource" packages used to provide Babel transpiling or Jest unit testing. Setting this parameter to true will remove these packaes. You can exclude false positives (and protect them from removal) by listing known good packages which would otherwise look unused as an array of glob patterns in \'_npm-check-plus.depcheck.ignoreMatches\' in the \'package.json\' file.'
     },
     {
-      name: 'updateMinimums',
-      isBoolean: true,
-      description: 'By default production package semver range specificatinos are left in place. Setting `updateMinimums` true will make the current \'wanted\' package the new minimum. Note, pre-production package minimums are always updated.'
+      name        : 'updateMinimums',
+      isBoolean   : true,
+      description : 'By default production package semver range specificatinos are left in place. Setting `updateMinimums` true will make the current \'wanted\' package the new minimum. Note, pre-production package minimums are always updated.'
     }
   ]
 

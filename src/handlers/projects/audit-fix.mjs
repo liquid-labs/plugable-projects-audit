@@ -3,7 +3,7 @@ import { doAuditFix, getAuditFixEndpointParameters } from './_lib/audit-fix-lib'
 
 const path = ['projects', ':projectName', 'audit-fix']
 
-const { help, method, parameters } = getAuditFixEndpointParameters({ workDesc: 'named' })
+const { help, method, parameters } = getAuditFixEndpointParameters({ workDesc : 'named' })
 
 const func = ({ app, reporter }) => async(req, res) => {
   reporter = reporter.isolate()

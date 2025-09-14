@@ -1,7 +1,7 @@
 import { httpSmartResponse } from '@liquid-labs/http-smart-response'
 import { generateReport, npmCheck } from 'npm-check-plus'
 
-const doAudit = async ({ app, projectName, req, res }) => {
+const doAudit = async({ app, projectName, req, res }) => {
   const { projectPath: packageRoot } = await app.ext._liqProjects.playgroundMonitor.getProjectData(projectName)
 
   const auditReport = await npmCheck({ packageRoot })
@@ -9,7 +9,7 @@ const doAudit = async ({ app, projectName, req, res }) => {
 
   const msg = report + (code !== 0 ? '\n\n<error>There were errors in retrieving the audit.<rst>' : '')
 
-  httpSmartResponse({ msg: report, data: auditReport, req, res })
+  httpSmartResponse({ msg, data : auditReport, req, res })
 }
 
 const getAuditEndpointParameters = ({ workDesc }) => {
