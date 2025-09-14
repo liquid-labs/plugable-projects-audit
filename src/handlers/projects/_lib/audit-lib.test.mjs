@@ -1,5 +1,6 @@
 /* global describe expect test */
 import { getAuditEndpointParameters } from './audit-lib'
+import { commonAuditPathParameters } from './common-audit-path-parameters'
 
 // essentially a placeholder test because it's the easiest way to satisfiy the qa requirement for now
 describe('getAuditEndpointParameters', () => {
@@ -11,7 +12,7 @@ describe('getAuditEndpointParameters', () => {
     expect(result).toHaveProperty('parameters')
 
     expect(result.method).toBe('get')
-    expect(result.parameters).toEqual([])
+    expect(result.parameters).toEqual(commonAuditPathParameters)
 
     expect(result.help.name).toContain('test')
     expect(result.help.summary).toContain('test')

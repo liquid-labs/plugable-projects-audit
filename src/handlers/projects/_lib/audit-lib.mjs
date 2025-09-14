@@ -1,6 +1,8 @@
 import { httpSmartResponse } from '@liquid-labs/http-smart-response'
 import { generateReport, npmCheck } from 'npm-check-plus'
 
+import { commonAuditPathParameters } from './common-audit-path-parameters'
+
 const doAudit = async({ app, projectName, req, res }) => {
   const { projectPath: packageRoot } = await app.ext._liqProjects.playgroundMonitor.getProjectData(projectName)
 
@@ -21,7 +23,7 @@ const getAuditEndpointParameters = ({ workDesc }) => {
 
   const method = 'get'
 
-  const parameters = []
+  const parameters = [...commonAuditPathParameters]
 
   return { help, method, parameters }
 }

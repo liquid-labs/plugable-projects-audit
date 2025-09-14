@@ -1,6 +1,8 @@
 import { httpSmartResponse } from '@liquid-labs/http-smart-response'
 import { fixReport, npmAutoFix, npmCheck } from 'npm-check-plus'
 
+import { commonAuditPathParameters } from './common-audit-path-parameters'
+
 const doAuditFix = async({ app, projectName, req, res }) => {
   const { dryRun, removePackages, updateMinimums } = req.vars
 
@@ -27,6 +29,7 @@ const getAuditFixEndpointParameters = ({ workDesc }) => {
   const method = 'put'
 
   const parameters = [
+    ...commonAuditPathParameters,
     {
       name        : 'dryRun',
       isBoolean   : true,
