@@ -15,7 +15,10 @@
   "keywords": [],
   "author": "Zane Rockenbaugh <zane@liquid-labs.com>",
   "license": "UNLICENSED",
-  "repository": "git+ssh://git@github.com/liquid-labs/plugable-projects-audit.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/liquid-labs/plugable-projects-audit.git"
+  },
   "bugs": {
     "url": "https://github.com/liquid-labs/plugable-projects-audit/issues"
   },
