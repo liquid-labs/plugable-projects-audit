@@ -1,6 +1,6 @@
 {
   "name": "@liquid-labs/plugable-projects-audit",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "",
   "main": "dist/plugable-projects-audit.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "make test",
     "prepack": "make build",
     "preversion": "npm test && make lint",
-    "qa": "make qa" 
+    "qa": "make qa"
   },
   "keywords": [],
   "author": "Zane Rockenbaugh <zane@liquid-labs.com>",
